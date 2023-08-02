@@ -6,11 +6,13 @@ const {
   updateContact,
 } = require("../models/contacts");
 
-const { contactValidator } = require("../schemas/movies-schemas");
+const { contactValidator } = require("../schemas/contacts-schemas");
 
 const { HttpError } = require("../helpers/HttpError");
 
-const { ctrlWrapper } = require("../decorators/ctrlWrapper");
+// const { ctrlWrapper } = require("../decorators/ctrlWrapper");
+
+const ctrlWrapper = require("../decorators/ctrlWrapper");
 
 const getAll = async (req, res) => {
   const contacts = await listContacts();
@@ -62,10 +64,20 @@ const updateById = async (req, res) => {
   res.status(200).json(contact);
 };
 
-module.exports = {
+const contactController = {
   getAll: ctrlWrapper(getAll),
   getById: ctrlWrapper(getById),
   add: ctrlWrapper(add),
   deleteById: ctrlWrapper(deleteById),
   updateById: ctrlWrapper(updateById),
 };
+
+module.exports = contactController;
+
+// module.exports = {
+//   getAll: ctrlWrapper(getAll),
+//   getById: ctrlWrapper(getById),
+//   add: ctrlWrapper(add),
+//   deleteById: ctrlWrapper(deleteById),
+//   updateById: ctrlWrapper(updateById),
+// };
