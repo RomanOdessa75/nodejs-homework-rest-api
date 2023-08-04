@@ -1,9 +1,10 @@
-const joi = require("joi");
+const Joi = require("joi");
 
-const contactSchema = joi.object({
-  name: joi.string().min(3),
-  email: joi.string().email(),
-  phone: joi.string().min(5),
+const contactSchema = Joi.object({
+  name: Joi.string().min(3),
+  email: Joi.string().email(),
+  phone: Joi.string().min(5),
+  favorite: Joi.boolean(),
 });
 
 const validator = (schema) => (body) => {
@@ -12,4 +13,8 @@ const validator = (schema) => (body) => {
 
 const contactValidator = validator(contactSchema);
 
-module.exports = contactValidator;
+const contactUpdateFavoriteSchema = Joi.object({
+  favorite: Joi.boolean().required(),
+});
+
+module.exports = { contactValidator, contactUpdateFavoriteSchema };
