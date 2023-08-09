@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const contactController = require("../../controllers/contacts-controllers");
+const contactController = require("../../controllers/contacts/index");
 
 const validateBody = require("../../decorators/validateBody");
 
