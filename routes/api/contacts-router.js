@@ -6,6 +6,8 @@ const contactController = require("../../controllers/contacts/index");
 
 const validateBody = require("../../decorators/validateBody");
 
+const authenticate = require("../../middlewares/authenticate");
+
 const {
   contactValidator,
   contactUpdateFavoriteSchema,
@@ -14,6 +16,8 @@ const {
 const isEmptyBody = require("../../middlewares/isEmptyBody");
 
 const isValidId = require("../../middlewares/isValidId");
+
+router.use(authenticate);
 
 router.get("/", contactController.getAll);
 

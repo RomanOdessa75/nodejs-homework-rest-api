@@ -12,4 +12,12 @@ const userSigninSchema = Joi.object({
   password: Joi.string().min(6).required(),
 });
 
-module.exports = { userSignupSchema, userSigninSchema };
+const userUpdateSubscriptionSchema = Joi.object({
+  subscription: Joi.string().valid("starter", "pro", "business").required(),
+});
+
+module.exports = {
+  userSignupSchema,
+  userSigninSchema,
+  userUpdateSubscriptionSchema,
+};
