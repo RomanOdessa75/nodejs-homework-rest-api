@@ -6,4 +6,5 @@ module.exports = {
   getCurrentUser: ctrlWrapper(require("./getCurrentUser")),
   signout: ctrlWrapper(require("./signout")),
   updateSubscription: ctrlWrapper(require("./updateSubscription")),
+  addAvatars: ctrlWrapper(require("./addAvatars")),
 };

@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 const { handleSaveError, handleUpdateValidate } = require("./hooks");
 
-const { emailRegexp } = require("../constants/user-constants");
+// const { emailRegexp } = require("../constants/user-constants");
 
 const userSchema = new Schema(
   {
@@ -25,9 +25,8 @@ const userSchema = new Schema(
       type: String,
       default: null,
     },
-    owner: {
-      type: Schema.Types.ObjectId,
-      ref: "user",
+    avatarURL: {
+      type: String,
     },
   },
   { versionkey: false, timestamps: true }

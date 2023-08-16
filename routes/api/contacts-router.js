@@ -6,16 +6,22 @@ const contactController = require("../../controllers/contacts/index");
 
 const validateBody = require("../../decorators/validateBody");
 
-const authenticate = require("../../middlewares/authenticate");
+const {
+  authenticate,
+  upload,
+  isValidId,
+  isEmptyBody,
+} = require("../../middlewares/index");
 
 const {
   contactValidator,
   contactUpdateFavoriteSchema,
 } = require("../../schemas/contacts-schemas");
 
-const isEmptyBody = require("../../middlewares/isEmptyBody");
+// const isEmptyBody = require("../../middlewares/isEmptyBody");
 
-const isValidId = require("../../middlewares/isValidId");
+// const isValidId = require("../../middlewares/isValidId");
+// const upload = require("../../middlewares/upload");
 
 router.use(authenticate);
 
@@ -25,6 +31,7 @@ router.get("/:contactId", isValidId, contactController.getById);
 
 router.post(
   "/",
+  upload.single("avatar"),
   isEmptyBody,
   validateBody(contactValidator),
   contactController.add

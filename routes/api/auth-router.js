@@ -4,7 +4,7 @@ const usersSchemas = require("../../schemas/users-schemas");
 
 const validateBody = require("../../decorators/validateBody");
 
-const authenticate = require("../../middlewares/authenticate");
+const { authenticate, upload } = require("../../middlewares/index");
 
 const authRouter = express.Router();
 
@@ -31,6 +31,13 @@ authRouter.patch(
   authenticate,
   validateBody(usersSchemas.userUpdateSubscriptionSchema),
   ctrl.updateSubscription
+);
+
+authRouter.patch(
+  "/avatars",
+  authenticate,
+  upload.single("avatar"),
+  ctrl.addAvatars
 );
 
 module.exports = authRouter;
