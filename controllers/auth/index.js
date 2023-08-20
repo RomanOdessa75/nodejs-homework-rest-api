@@ -7,4 +7,6 @@ module.exports = {
   signout: ctrlWrapper(require("./signout")),
   updateSubscription: ctrlWrapper(require("./updateSubscription")),
   addAvatars: ctrlWrapper(require("./addAvatars")),
+  verifyEmail: ctrlWrapper(require("./verifyEmail")),
+  resendVerifyEmail: ctrlWrapper(require("./resendVerifyEmail")),
 };
